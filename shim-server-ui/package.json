@@ -27,9 +27,10 @@
     "jshint-stylish": "~2.0.0",
     "load-grunt-tasks": "~3.2.0",
     "time-grunt": "~1.2.1",
-    "grunt-karma": "~0.10.1",
+	"karma": "",
+    "grunt-karma": "",
     "karma-phantomjs-launcher": "~0.1.4",
-    "karma": "~0.12.33",
+	"jasmine-core": "",
     "karma-jasmine": "~0.3.5",
     "grunt-text-replace": "~0.4.0"
   },

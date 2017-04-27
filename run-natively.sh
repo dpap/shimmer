@@ -13,6 +13,12 @@ then
     exit 1
 fi
 
+# build the console
+#echo -n "Do you want to rebuild the console (y/N)? "
+#read answer
+#if echo "$answer" | grep -iq "^y" ;then
+cd ${BASEDIR}/shim-server-ui #CMD
+
 if ! isNpmPackageInstalled grunt-cli
 then
     echo Installing Grunt, you may be asked for your password to run sudo...
@@ -38,4 +44,25 @@ bower install #CMD
 echo Building the console...
 grunt build #CMD
 
+cd ${BASEDIR}/shim-server/src/main/resources #CMD
+ln -sf ${BASEDIR}/shim-server-ui/docker/assets public
+#CMD create a symlink called shim-server/src/main/resources/public to the Grunt output directory
+#fi
+
 ./gradlew shim-server:bootRun #CMD
+
+#echo "The MongoDB hostname defaults to the setting in application.yaml. Initially the host name is 'mongo'."
+#echo -n "Please enter a hostname to override it, or press Enter to keep the default? "
+#read answer
+#trimmed=${answer// /}
+
+# start the resource server
+#echo Starting the resource server...
+#cd ${BASEDIR}
+#if [[ ! -z "$trimmed" ]] ;then
+#    SPRING_DATA_MONGODB_URI="mongodb://${trimmed}:27017/omh_dsu" ./gradlew shim-server:bootRun #CMD
+#    else
+#    ./gradlew shim-server:bootRun #CMD
+#fi
+
+
