@@ -22,7 +22,7 @@ cd ${BASEDIR}/shim-server-ui #CMD
 if ! isNpmPackageInstalled grunt-cli
 then
     echo Installing Grunt, you may be asked for your password to run sudo...
-    sudo npm install -g grunt-cli #CMD
+    npm install -g grunt-cli #CMD
 else
     echo Grunt is already installed, skipping...
 fi
@@ -30,7 +30,7 @@ fi
 if ! isNpmPackageInstalled bower
 then
     echo Installing Bower, you may be asked for your password to run sudo...
-    sudo npm install -g bower #CMD
+    npm install -g bower #CMD
 else
     echo Bower is already installed, skipping...
 fi
@@ -39,7 +39,7 @@ echo Installing npm dependencies...
 npm install #CMD
 
 echo Installing Bower dependencies...
-bower install #CMD
+bower --allow-root install #CMD
 
 echo Building the console...
 grunt build #CMD
@@ -49,16 +49,17 @@ ln -sf ${BASEDIR}/shim-server-ui/docker/assets public
 #CMD create a symlink called shim-server/src/main/resources/public to the Grunt output directory
 #fi
 
-./gradlew shim-server:bootRun #CMD
-
 #echo "The MongoDB hostname defaults to the setting in application.yaml. Initially the host name is 'mongo'."
 #echo -n "Please enter a hostname to override it, or press Enter to keep the default? "
 #read answer
 #trimmed=${answer// /}
 
+cd ${BASEDIR}
+./gradlew shim-server:bootRun 
+
 # start the resource server
-#echo Starting the resource server...
-#cd ${BASEDIR}
+# echo Starting the resource server...
+# cd ${BASEDIR}
 #if [[ ! -z "$trimmed" ]] ;then
 #    SPRING_DATA_MONGODB_URI="mongodb://${trimmed}:27017/omh_dsu" ./gradlew shim-server:bootRun #CMD
 #    else
