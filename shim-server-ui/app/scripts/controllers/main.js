@@ -9,7 +9,7 @@ angular.module('sandboxConsoleApp')
             $window.close();
         }, 3000);
         $scope.error = $routeParams.errorState=='failure';*/
-		$window.location.href = "http://imeasure.menychtas.com:8000";
+		$window.location.href = "http://imeasure.menychtas.com:8000/#/shimmercallback";
     }])
     .controller('MainCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
