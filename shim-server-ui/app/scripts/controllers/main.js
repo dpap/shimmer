@@ -5,11 +5,12 @@
  */
 angular.module('sandboxConsoleApp')
     .controller('AuthorizationCompleteCtrl', ['$scope', '$http', '$window', '$timeout','$routeParams', function ($scope, $http, $window, $timeout, $routeParams) {
-        /*$timeout(function() {
-            $window.close();
-        }, 3000);
-        $scope.error = $routeParams.errorState=='failure';*/
-		$window.location.href = "http://imeasure.menychtas.com:8000/#/shimmercallback";
+        $timeout(function() {
+            //$window.close();
+			$window.location.href = "http://imeasure.menychtas.com:8000/#/shimmercallback";
+        }, 1000);
+        //$scope.error = $routeParams.errorState=='failure';
+		//$window.location.href = "http://imeasure.menychtas.com:8000/#/shimmercallback";
     }])
     .controller('MainCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
