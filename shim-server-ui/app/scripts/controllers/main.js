@@ -7,7 +7,7 @@ angular.module('sandboxConsoleApp')
     .controller('AuthorizationCompleteCtrl', ['$scope', '$http', '$window', '$timeout','$routeParams', function ($scope, $http, $window, $timeout, $routeParams) {
         $timeout(function() {
             //$window.close();
-			$window.location.href = "http://imeasure.menychtas.com:8000/#/shimmercallback";
+			$window.location.href = "http://localhost:8000/#/shimmercallback";
         }, 1000);
         //$scope.error = $routeParams.errorState=='failure';
 		//$window.location.href = "http://imeasure.menychtas.com:8000/#/shimmercallback";

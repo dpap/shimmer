@@ -3,7 +3,7 @@ spring:
     name: Shimmer
   data:
     mongodb:
-      uri: mongodb://mongo:27017/omh_dsu
+      uri: mongodb://localhost:27017/omh_dsu
   jackson:
     serialization:
       indent_output: true
@@ -18,7 +18,7 @@ logging:
 openmhealth:
   shim:
     server:
-      callbackUrlBase: http://imeasure.menychtas.com:8083
+      callbackUrlBase: http://localhost:8083
 
     #NOTE: Uncomment and fill in the clientId/clientSecret with your credentials if you're not using the UI
     #NOTE: Uncomment and set partnerAccess to true if your credentials for a given API have partner access
@@ -60,5 +60,5 @@ openmhealth:
     #healthvault:
     #  clientId: [YOUR_CLIENT_ID]
     googlefit:
-      clientId: 767582340895-ec6duh67la04lshbpq5nkd0pfndh6bqr.apps.googleusercontent.com
-      clientSecret:  7vW0gBP8jqvLh5W7lzdCpqnv
+      clientId: 257899067533-6cd83n7stjf12odbk9u9k2a7gfbgjs45.apps.googleusercontent.com
+      clientSecret: 9tewpFRVx9_R_ZtSf2bsdfct
