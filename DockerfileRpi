@@ -11,5 +11,20 @@ WORKDIR /shimmer-app
 # Bundle app source
 COPY . /shimmer-app
 
+#Compilation is better done on a PC. Currently on Rpi2 Grunt fails with a Out of Memory error
+#Run these commands on a PC to generate "shim-server-ui/docker/assets"
+#RUN cd shim-server-ui && \
+#	npm install -g grunt-cli && \
+#	npm install -g bower && \
+#	bower --allow-root install && \		
+#	grunt build && \
+#	cd .. 
+
+RUN ln -sf /shimmer-app/shim-server-ui/docker/assets /shimmer-app/shim-server/src/main/resources/public
+
 EXPOSE 8083
-CMD [ "./run-natively.sh" ]
+
+CMD ["bash", "-c" , "./gradlew shim-server:bootRun"] 
+#CMD ["bash", "-c" , "while true; do sleep 5; done"]; 
+##  
+#CMD [ "./run-natively.sh" ]
