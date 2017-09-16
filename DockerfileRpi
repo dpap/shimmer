@@ -1,8 +1,9 @@
-FROM resin/raspberry-pi3-openjdk:openjdk-8-jdk-20170426
+#FROM resin/raspberry-pi3-openjdk:openjdk-8-jdk-20170426
+FROM agileiot/raspberry-pi3-zulujdk:8-jdk-maven
 
-RUN apt-get update
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get install -y nodejs
+#RUN apt-get update
+#RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+#RUN apt-get install -y nodejs
 
 # Create app directory
 RUN mkdir -p /shimmer-app
@@ -16,6 +17,7 @@ COPY . /shimmer-app
 #RUN cd shim-server-ui && \
 #	npm install -g grunt-cli && \
 #	npm install -g bower && \
+#	npm install \
 #	bower --allow-root install && \		
 #	grunt build && \
 #	cd .. 
