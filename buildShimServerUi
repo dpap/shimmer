@@ -1,0 +1,8 @@
+cd shim-server-ui && \
+npm install -g grunt-cli && \
+npm install -g bower && \
+npm install
+bower install && \		
+grunt build && \
+rm -fr node_modules \
+cd .. 

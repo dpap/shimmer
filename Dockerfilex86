@@ -1,0 +1,33 @@
+#FROM resin/raspberry-pi3-openjdk:openjdk-8-jdk-20170426
+#FROM agileiot/raspberry-pi3-zulujdk:8-jdk-maven
+FROM java:8
+
+#RUN apt-get update
+#RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+#RUN apt-get install -y nodejs
+
+# Create app directory
+RUN mkdir -p /shimmer-app
+WORKDIR /shimmer-app
+
+# Bundle app source
+COPY . /shimmer-app
+
+#Compilation is better done on a PC. Currently on Rpi2 Grunt fails with a Out of Memory error
+#Run these commands on a PC to generate "shim-server-ui/docker/assets"
+#RUN cd shim-server-ui && \
+#	npm install -g grunt-cli && \
+#	npm install -g bower && \
+#	npm install \
+#	bower --allow-root install && \		
+#	grunt build && \
+#	cd .. 
+
+RUN ln -sf /shimmer-app/shim-server-ui/docker/assets /shimmer-app/shim-server/src/main/resources/public
+
+EXPOSE 8083
+
+CMD ["bash", "-c" , "./gradlew shim-server:bootRun"] 
+#CMD ["bash", "-c" , "while true; do sleep 5; done"]; 
+##  
+#CMD [ "./run-natively.sh" ]
