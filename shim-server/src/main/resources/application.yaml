@@ -18,7 +18,7 @@ logging:
 openmhealth:
   shim:
     server:
-      callbackUrlBase: http://localhost:8083
+      callbackUrlBase: http://${AGILE_HOST}:8083
 
     #NOTE: Uncomment and fill in the clientId/clientSecret with your credentials if you're not using the UI
     #NOTE: Uncomment and set partnerAccess to true if your credentials for a given API have partner access
@@ -60,5 +60,5 @@ openmhealth:
     #healthvault:
     #  clientId: [YOUR_CLIENT_ID]
     googlefit:
-      clientId: 257899067533-6cd83n7stjf12odbk9u9k2a7gfbgjs45.apps.googleusercontent.com
-      clientSecret: 9tewpFRVx9_R_ZtSf2bsdfct
+      clientId: 257899067533-qd8lh87id4927no4dlqb1r8p9agnntbn.apps.googleusercontent.com
+      clientSecret:  wsPTMzYnk4GEyn94bw1p-S1k 
