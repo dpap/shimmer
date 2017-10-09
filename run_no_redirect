@@ -1,0 +1,1 @@
+export AGILE_HOST=urn:ietf:wg:oauth:2.0:oob ; export DOCKER_HOST=192.168.136.2:2375 ; docker-compose build shimmer && docker-compose up shimmer

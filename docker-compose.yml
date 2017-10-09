@@ -1,17 +1,52 @@
-resourceserver:
-  image: openmhealth/shimmer-resource-server
-  environment:
-    SPRING_PROFILES_ACTIVE: development
-    OPENMHEALTH_SHIM_SERVER_CALLBACKURLBASE: http://192.168.99.100:8083
-  links:
-    - mongo:mongo
+version: '2'
 
-mongo:
-  image: mongo
+services:
+ mongo:
+    container_name: mongodb_2
+    build: 
+        context: rpi-mongo
+        dockerfile: Dockerfile
+    ports:
+      - "27017:27017"
+    restart: always
+ 
+ shimmer:
+    container_name: shimmer
+    #image: agileIot/shimmer
+    build: 
+        context: .
+        dockerfile: DockerfileRpi
+    ports:
+     - "8083:8083"
+    environment:
+      - MONGO_DB=172.22.0.1
+      - AGILE_HOST=$AGILE_HOST
+    network_mode: "host" 
+    depends_on:
+      - mongo   
+    restart: always
 
-console:
-  image: openmhealth/shimmer-console
-  ports:
-    - "8083:8083"
-  links:
-    - resourceserver:resource-server
+ shimmer_standalone:
+    container_name: shimmer
+    build: 
+        context: .
+        dockerfile: DockerfileRpi
+    ports:
+     - "8083:8083"
+    environment:
+      - MONGO_DB=172.22.0.1
+      - AGILE_HOST=$AGILE_HOST
+    network_mode: "host"
+    restart: always 
+
+ shimmer_x86:
+    container_name: shimmer
+    build: 
+        context: .
+        dockerfile: Dockerfilex86
+    ports:
+     - "8083:8083"
+    environment:
+      - MONGO_DB=172.22.0.1
+      - AGILE_HOST=$AGILE_HOST
+    network_mode: "host" 
